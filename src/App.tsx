@@ -72,14 +72,14 @@ function App() {
     }
   }
 
-  finalValues = commonProjects.map((a, i) => ({
+  finalValues = commonProjects.map((a) => ({
 
     "Employee ID #1": a[0].EmpID,
     "Employee ID #2": a[1].EmpID,
     "Project ID": a[0].ProjectID,
     "Days worked": Number(dateCalculator(biggestDate(a[0].DateFrom, a[1].DateFrom), smallestDate(a[0].DateTo, a[1].DateTo)))
 
-  }))
+  })).filter((a) => a['Days worked'] > 0)
 
   return (
     <div className="App">

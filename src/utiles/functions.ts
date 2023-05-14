@@ -11,8 +11,8 @@ export const dateCalculator = (DateFrom: string, DateTo: string) => {
 
 	// To calculate the no. of days between two dates
 	const DifferenceInDays = DifferenceInTime / (1000 * 3600 * 24);
-
-	return DifferenceInDays.toFixed();
+	if (DifferenceInDays > 0) return DifferenceInDays.toFixed();
+	return 0
 }
 
 export const biggestDate = (firstDate: string, secondDate: string) => {
