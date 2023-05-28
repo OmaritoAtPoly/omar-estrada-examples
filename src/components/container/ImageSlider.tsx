@@ -1,5 +1,6 @@
 import {useCallback, useRef, useState} from 'react';
-import {Slider} from './visual/Slider';
+import {useCustomHook} from '../../utils/functions';
+import {Slider} from '../visual/Slider';
 
 interface Props {
 	slides: {
@@ -10,8 +11,9 @@ interface Props {
 
 const ImageSlider = ({slides}: Props) => {
 	const [current, setCurrent] = useState(0);
-	const timer = useRef(0);
 	const length = slides.length;
+
+	const {customDelayFunction} = useCustomHook();
 
 	const nextSlide = useCallback(() => {
 		setCurrent(current === length - 1 ? 0 : current + 1)
@@ -20,17 +22,6 @@ const ImageSlider = ({slides}: Props) => {
 	const prevSlide = useCallback(() => {
 		setCurrent(current === 0 ? length - 1 : current - 1);
 	}, [current, length, setCurrent]);
-
-	const customDelayFunction = (callback: Function, delay: number) => {
-
-		if (timer) {
-			window.clearTimeout(timer.current);
-		}
-
-		timer.current = window.setTimeout(function () {
-			callback();
-		}, delay);
-	}
 
 	window.addEventListener('wheel', function (event) {
 		if (event.deltaX < 0) {
