@@ -1,4 +1,4 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {useCustomHook} from '../../utils/functions';
 import {Slider} from '../visual/Slider';
 
