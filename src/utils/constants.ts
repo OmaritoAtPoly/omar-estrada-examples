@@ -4,5 +4,31 @@ export const CONSTANTS = {
 	BETFINAL: 'Betfinal',
 	COSMOWIN: 'Cosmoswin',
 	NO_PAGE_FOUND: 'Page not found',
-	THERE_IS_ERROR:'There is an error',
+	THERE_IS_ERROR: 'There is an error',
+	BET: 'bet',
+	FINAL: 'final',
+	AMOUNT: 'Amount',
+	USER_CURRENCY: 'USD'
 }
+
+export const PaymentMethods = [
+	{
+		url: 'https://betfinal.finalpay.app/logo/betfinal-1/ezeewallet.png',
+		alt: 'ezeewallet'
+	},
+
+	{
+		url: 'https://betfinal.finalpay.app/logo/betfinal-1/muchbetter.png',
+		alt: 'muchbetter'
+	},
+
+	{
+		url: 'https://betfinal.finalpay.app/logo/betfinal-1/astropay.png',
+		alt: 'astropay'
+	},
+
+	{
+		url: 'https://betfinal.finalpay.app/logo/betfinal-1/gumballpay.png',
+		alt: 'gumballpay'
+	},
+]

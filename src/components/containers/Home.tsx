@@ -1,5 +1,7 @@
 import HomeView from '../views/HomeView';
 
 export default function Home() {
-  return <HomeView />
+  return <header className="App-header">
+    <HomeView />
+  </header>
 }
