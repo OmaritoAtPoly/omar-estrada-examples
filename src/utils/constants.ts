@@ -8,10 +8,16 @@ export const CONSTANTS = {
 	BET: 'bet',
 	FINAL: 'final',
 	AMOUNT: 'Amount',
-	USER_CURRENCY: 'USD'
+	USER_CURRENCY: 'USD',
+	BACK_HOME: 'Back to Home',
 }
 
 export const PaymentMethods = [
+	{
+		url: 'https://betfinal.finalpay.app/logo/betfinal-1/gumballpay.png',
+		alt: 'gumballpay'
+	},
+
 	{
 		url: 'https://betfinal.finalpay.app/logo/betfinal-1/ezeewallet.png',
 		alt: 'ezeewallet'
@@ -25,10 +31,5 @@ export const PaymentMethods = [
 	{
 		url: 'https://betfinal.finalpay.app/logo/betfinal-1/astropay.png',
 		alt: 'astropay'
-	},
-
-	{
-		url: 'https://betfinal.finalpay.app/logo/betfinal-1/gumballpay.png',
-		alt: 'gumballpay'
 	},
 ]

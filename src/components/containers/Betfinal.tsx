@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {BetfinalView} from '../views/BetfinalView';
+import {BetfinalView} from '../views/betfinal/BetfinalView';
 import {useLocation} from "react-router-dom";
 
 export const Betfinal = () => {

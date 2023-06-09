@@ -2,16 +2,17 @@ import SportsIcon from '@mui/icons-material/Sports';
 import {makeStyles} from '@mui/styles';
 import {nanoid} from 'nanoid';
 import {NavLink} from 'react-router-dom';
-import {CONSTANTS, PaymentMethods} from '../../utils/constants';
-import theme from '../../utils/theme';
-import {CustomizedButtonBase} from './Buttons/CustomizedButtonBase';
-import CustomizedInputBase from './inputs/CustomizedInputBase';
+import {CONSTANTS} from '../../../utils/constants';
+import theme from '../../../utils/theme';
+import {CustomizedButtonBase} from '../Buttons/CustomizedButtonBase';
+import {PaymentMethods} from './paymentsMethods/PaymentMethods';
+import {QuantityInput} from './quantityInput/QuantityInput';
 
 interface Props {
-	quantities: number[];
 	handleQuantityButtons: (value: number) => () => void;
-	buttonType?: string;
 	onTextInputChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+	quantities: number[];
+	buttonType?: string;
 	inputCurrentValue: number | string;
 }
 
@@ -40,14 +41,6 @@ const useStyles = makeStyles({
 		color: theme.status.betfinalPrimary,
 		fontWeight: 'bolder',
 	},
-	buttons: {
-		display: 'flex',
-		justifyContent: 'space-around',
-		alignItems: 'center',
-		flexWrap: 'wrap',
-		width: 'fit-content',
-		margin: 'auto',
-	},
 	buttonSet: {
 		display: 'flex',
 		flexWrap: 'wrap'
@@ -65,21 +58,10 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	inputContainer: {
-		display: 'flex',
-		alignItems: 'center',
-		border: '2px solid #fff'
-	},
-	userCurrency: {
-		fontSize: '20px',
-		margin: 0,
-		color: '#fff',
-		marginInline: '10px',
-		fontWeight: 900,
-	},
 	navLink: {
 		color: '#fff',
-	}
+		textDecoration: 'none',
+	},
 });
 
 export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onTextInputChange = () => { }, inputCurrentValue}: Props) => {
@@ -92,22 +74,13 @@ export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onT
 				<p>{CONSTANTS.BET}</p>
 				<p className={classes.finalPart}>{CONSTANTS.FINAL}</p>
 			</div>
-			<div className={classes.buttons}>
-				{PaymentMethods.map((a) => (
-					<CustomizedButtonBase
-						variant="text"
-						buttonType={buttonType}
-						key={a.alt}
-					>
-						<img src={a.url} alt={a.alt} />
-					</CustomizedButtonBase>
-				))}
-			</div>
+			<PaymentMethods buttonType={buttonType} />
 			<div className={classes.inputRoot}>
-				<div className={classes.inputContainer}>
-					<CustomizedInputBase onChange={onTextInputChange} value={inputCurrentValue}/>
-					<p className={classes.userCurrency}>{CONSTANTS.USER_CURRENCY}</p>
-				</div>
+				<QuantityInput
+					inputCurrentValue={inputCurrentValue}
+					onTextInputChange={onTextInputChange}
+					type='number'
+				/>
 				<div className={classes.buttonSet}>
 					{quantities.map((a) => (
 						<CustomizedButtonBase
@@ -122,7 +95,7 @@ export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onT
 					))}
 				</div>
 			</div>
-			<NavLink className={classes.navLink} to='/'>back</NavLink>
+			<NavLink className={classes.navLink} to='/'>{CONSTANTS.BACK_HOME}</NavLink>
 		</div>
 	)
 }

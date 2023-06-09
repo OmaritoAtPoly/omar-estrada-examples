@@ -1,4 +1,4 @@
-import TextField from '@mui/material/TextField';
+import TextField, {TextFieldProps} from '@mui/material/TextField';
 import {makeStyles} from '@mui/styles';
 import {CONSTANTS} from '../../../utils/constants';
 import theme from '../../../utils/theme';
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function CustomizedInputBase({customStyle = '', onChange = () => {}, value}: Props) {
+export default function CustomizedInputBase({customStyle = '', onChange = () => {}, value, ...props}: Props & TextFieldProps) {
   const classes = useStyles();
 
   return (
@@ -61,6 +61,7 @@ export default function CustomizedInputBase({customStyle = '', onChange = () => 
         className={`${classes.textField} ${classes.floatingText}`}
         onChange={onChange}
         value={value}
+        {...props}
       />
     </div>
   );
