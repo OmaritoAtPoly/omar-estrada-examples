@@ -10,6 +10,7 @@ export const CONSTANTS = {
 	AMOUNT: 'Amount',
 	USER_CURRENCY: 'USD',
 	BACK_HOME: 'Back to Home',
+	PAYMENT_METHOD: 'Select your payment method'
 }
 
 export const PaymentMethods = [

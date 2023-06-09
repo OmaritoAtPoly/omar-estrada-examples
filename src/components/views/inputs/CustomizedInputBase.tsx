@@ -6,7 +6,7 @@ import theme from '../../../utils/theme';
 interface Props {
   customStyle?: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
-  value: number | string;
+  value?: number | string;
 };
 
 const useStyles = makeStyles({

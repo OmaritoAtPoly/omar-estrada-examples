@@ -1,5 +1,6 @@
 import {makeStyles} from '@mui/styles';
 import React from 'react'
+import {CONSTANTS} from '../../../../utils/constants';
 import {Cards} from './Cards'
 import {Cryptos} from './Cryptos'
 import {Paypal} from './Paypal'
@@ -22,17 +23,24 @@ const useStyles = makeStyles({
 		width: 'fit-content',
 		margin: 'auto',
 	},
+	text: {
+		margin: 0,
+		fontSize: '20px',
+	}
 });
 
 export const PaymentMethods = ({buttonType}: Props) => {
 	const classes = useStyles();
 	return (
 		<div className={classes.paymentMethods}>
-			<div className={classes.Cards}>
-				<Cards buttonType={buttonType} />
+			<div>
+				<p className={classes.text}>{CONSTANTS.PAYMENT_METHOD}</p>
+				<div className={classes.Cards}>
+					<Cards buttonType={buttonType} />
+				</div>
 			</div>
 			<div>
-			<Cryptos />
+				<Cryptos />
 			</div>
 			<Paypal />
 		</div>

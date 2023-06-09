@@ -5,15 +5,20 @@ import {NavLink} from 'react-router-dom';
 import {CONSTANTS} from '../../../utils/constants';
 import theme from '../../../utils/theme';
 import {CustomizedButtonBase} from '../Buttons/CustomizedButtonBase';
+import {PaymentFields} from './paymentFields/PaymentFields';
 import {PaymentMethods} from './paymentsMethods/PaymentMethods';
 import {QuantityInput} from './quantityInput/QuantityInput';
 
 interface Props {
 	handleQuantityButtons: (value: number) => () => void;
-	onTextInputChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+	onQuantityTextInputChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+	onCardNumberChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+	onCvvChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 	quantities: number[];
 	buttonType?: string;
 	inputCurrentValue: number | string;
+	cardNumber?: number | string;
+	cvv?: number | string;
 }
 
 const useStyles = makeStyles({
@@ -57,14 +62,26 @@ const useStyles = makeStyles({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		margin: '30px 0 30px 0',
 	},
 	navLink: {
 		color: '#fff',
 		textDecoration: 'none',
+		margin: 'auto',
+		fontSize: '30px',
 	},
 });
 
-export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onTextInputChange = () => { }, inputCurrentValue}: Props) => {
+export const BetfinalView = ({
+	handleQuantityButtons,
+	quantities,
+	buttonType,
+	onQuantityTextInputChange,
+	onCardNumberChange,
+	onCvvChange,
+	inputCurrentValue,
+	cardNumber,
+	cvv}: Props) => {
 	const classes = useStyles();
 
 	return (
@@ -78,7 +95,7 @@ export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onT
 			<div className={classes.inputRoot}>
 				<QuantityInput
 					inputCurrentValue={inputCurrentValue}
-					onTextInputChange={onTextInputChange}
+					onTextInputChange={onQuantityTextInputChange}
 					type='number'
 				/>
 				<div className={classes.buttonSet}>
@@ -95,6 +112,12 @@ export const BetfinalView = ({handleQuantityButtons, quantities, buttonType, onT
 					))}
 				</div>
 			</div>
+			<PaymentFields
+				inputCurrentValue={cardNumber}
+				cvv={cvv}
+				onTextInputChange={onCardNumberChange}
+				onCvvChange={onCvvChange}
+			/>
 			<NavLink className={classes.navLink} to='/'>{CONSTANTS.BACK_HOME}</NavLink>
 		</div>
 	)

@@ -25,9 +25,6 @@ const useStyles = makeStyles({
 			},
 		},
 	},
-	floating: {
-		backgroundColor: 'turquoise'
-	},
 	quantityButton: {
 		"&.MuiButton-root": {
 			margin: '3px',
